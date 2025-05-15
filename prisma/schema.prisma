@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -26,7 +25,8 @@ model Books {
   name String @db.VarChar(100)
   stock Int 
   price Decimal @db.Decimal(10,2)
-  image String @db.VarChar(100)
+  image String @db.VarChar(255)
+  image_id String @db.VarChar(255)
 
   details Details[] 
 }
