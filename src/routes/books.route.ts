@@ -90,23 +90,37 @@ router.put("/:id", upload.single("image"), async (req: Request, res: Response) =
 
   const book = await getBookId(parseInt(id));
 
-  if(!book) {
+  if (!book) {
     res.status(404).json({ error: "Book not found" });
     return;
   }
 
   try {
-    const bookData = {
+    const bookData: any = {
       ...req.body,
       stock: parseInt(req.body.stock),
       price: parseFloat(req.body.price),
     };
 
     if (req.file) {
-      const cloudinaryResult = await cloudinary.uploader.upload(req.file.path, {
-        folder: "Content"
-      });
-      fs.unlinkSync(req.file.path);
+      const streamUpload = (): Promise<UploadApiResponse> => {
+        return new Promise((resolve, reject) => {
+          const stream = cloudinary.uploader.upload_stream(
+            { folder: "Content" },
+            (error, result) => {
+              if (error) return reject(error);
+              resolve(result as UploadApiResponse);
+            }
+          );
+          streamifier.createReadStream(req.file!.buffer).pipe(stream);
+        });
+      };
+
+      const cloudinaryResult = await streamUpload();
+
+      if (book.image_id) {
+        await cloudinary.uploader.destroy(book.image_id);
+      }
 
       bookData.image = cloudinaryResult.secure_url;
       bookData.image_id = cloudinaryResult.public_id;
@@ -120,6 +134,6 @@ router.put("/:id", upload.single("image"), async (req: Request, res: Response) =
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }
-});  
+}); 
 
 export { router };
