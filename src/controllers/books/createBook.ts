@@ -2,7 +2,6 @@ import { prisma } from "@/utils/prisma";
 import type { Book } from "@/types/index";
 
 const createBook = async (value: Book) => {
-  console.log(value);
   try {
     const { id, ...book } = value;
     const newBook = await prisma.books.create({ data: book });
