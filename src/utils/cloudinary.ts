@@ -3,7 +3,7 @@ import {
   CLOUDINARY_CLOUD_NAME,
   CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECRET
-} from "@/utils/env";
+} from "../utils/env";
 
 cloudinary.config({
   cloud_name: CLOUDINARY_CLOUD_NAME,

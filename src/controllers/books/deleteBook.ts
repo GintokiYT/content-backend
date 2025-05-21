@@ -1,5 +1,5 @@
-import { prisma } from "@/utils/prisma";
-import type { Book } from "@/types/index";
+import { prisma } from "../../utils/prisma";
+import type { Book } from "../../types/index";
 
 const deleteBook = async (id: Book["id"]) => {
   try {

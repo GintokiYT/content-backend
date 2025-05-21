@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { createBookSchema } from "@/models/books";
+import { createBookSchema } from "../../models/books";
 
 const validationCreateBook = (req: Request, res: Response, next: NextFunction) => {
   try {

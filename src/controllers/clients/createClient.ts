@@ -1,5 +1,5 @@
-import { prisma } from "@/utils/prisma";
-import type { Book, Client,  } from "@/types/index";
+import { prisma } from "../../utils/prisma";
+import type { Book, Client,  } from "../../types/index";
 
 const createClient = async (data: Omit<Client, "id">) => {
   try {

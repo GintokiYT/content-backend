@@ -1,15 +1,15 @@
 import { Request, Response, Router } from "express";
-import validationCreateBook from "@/middlewares/books/validationCreateBook";
-import { upload } from "@/middlewares/upload";
-import cloudinary from "@/utils/cloudinary";
+import validationCreateBook from "../middlewares/books/validationCreateBook";
+import { upload } from "../middlewares/upload";
+import cloudinary from "../utils/cloudinary";
 import { UploadApiResponse } from "cloudinary";
 import streamifier from "streamifier";
 import fs from "fs";
-import deleteBook from "@/controllers/books/deleteBook";
-import updateBook from "@/controllers/books/updateBook";
-import getBookId from "@/controllers/books/getBookId";
-import createBook from "@/controllers/books/createBook";
-import getAllBooks from "@/controllers/books/getAllBooks";
+import deleteBook from "../controllers/books/deleteBook";
+import updateBook from "../controllers/books/updateBook";
+import getBookId from "../controllers/books/getBookId";
+import createBook from "../controllers/books/createBook";
+import getAllBooks from "../controllers/books/getAllBooks";
 
 const router = Router();
 

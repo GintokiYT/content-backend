@@ -1,5 +1,5 @@
-import { Book } from "@/types";
-import { prisma } from "@/utils/prisma";
+import { Book } from "../../types";
+import { prisma } from "../../utils/prisma";
 
 const getBookId = async (id: Book["id"]) => {
   try {

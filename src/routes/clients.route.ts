@@ -1,5 +1,5 @@
-import createClient from "@/controllers/clients/createClient";
-import getAllClients from "@/controllers/clients/getAllClients";
+import createClient from "../controllers/clients/createClient";
+import getAllClients from "../controllers/clients/getAllClients";
 import { Request, Response, Router } from "express";
 
 const router = Router();

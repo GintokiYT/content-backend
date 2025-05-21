@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
-import getAllOrders from "@/controllers/orders/getAllOrders";
-import { prisma } from "@/utils/prisma";
+import getAllOrders from "../controllers/orders/getAllOrders";
+import { prisma } from "../utils/prisma";
 
 const router = Router();
 
